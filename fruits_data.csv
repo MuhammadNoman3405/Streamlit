@@ -1,0 +1,8 @@
+Fruit_Name,Category,Cost_Price,Selling_Price,Stock_Quantity,Date_Received,Expiry_Date,Region
+Apple,Pome,50,80,200,2026-02-01,2026-02-15,North
+Banana,Tropical,30,50,500,2026-02-05,2026-02-10,South
+Orange,Citrus,40,70,300,2026-02-02,2026-02-20,Central
+Mango,Tropical,100,180,150,2026-02-07,2026-02-14,South
+Grapes,Berries,120,200,100,2026-02-04,2026-02-12,North
+Pineapple,Tropical,150,250,80,2026-02-01,2026-02-25,East
+Strawberry,Berries,200,350,50,2026-02-08,2026-02-11,West
