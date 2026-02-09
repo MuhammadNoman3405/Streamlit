@@ -223,4 +223,53 @@ if file is not None:
     uniq = df["Fruit_Name"].unique()
     choose_fruit = st.selectbox("Choose the Fruite:", uniq)
     new_df = df[df["Fruit_Name"] == choose_fruit]
-    st.dataframe(new_df)  # this will print the new dataframe value
+    st.dataframe(new_df)
+
+
+##>>>>>>>>>>>>>>>>>>> Currency Calculator viva Api Server>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+import requests
+
+# A list of frequently used currency codes (ISO 4217)
+currency_codes = [
+    "USD",
+    "EUR",
+    "GBP",
+    "JPY",
+    "INR",
+    "PKR",
+    "CAD",
+    "AUD",
+    "CHF",
+    "CNY",
+    "SAR",
+    "AED",
+    "TRY",
+    "NZD",
+    "SGD",
+    "HKD",
+    "MYR",
+    "KWD",
+]
+
+st.title("Currency Converter")
+
+amount_entered = st.number_input("Enter the amount in Pkr", min_value=1)
+selected_currency = st.selectbox("Select the Currency:", currency_codes)
+if st.button("Click to convert"):
+    url = "https://api.exchangerate-api.com/v4/latest/PKR"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        data = response.json()
+        rate = data["rates"][selected_currency]
+
+        final_result = amount_entered * rate  ## formula for conversion
+
+        # this shows final output
+        st.write(
+            f"{selected_currency} Rate: {data['rates'][selected_currency]} And Converted Amount :{final_result:,.2f}"
+        )
+
+    else:
+        st.write("Failed to retrieve data")
