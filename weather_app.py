@@ -15,7 +15,9 @@ if "history" not in st.session_state:
     st.session_state.history = []
 
 # 4. User Input
-city = st.text_input("Enter City Name (e.g., Taxila, London, Tokyo):", "Taxila, Pakistan")
+city = st.text_input(
+    "Enter City Name (e.g., Taxila, London, Tokyo):", "Taxila, Pakistan"
+)
 
 if st.button("Get Weather"):
     params = {
@@ -31,11 +33,13 @@ if st.button("Get Weather"):
 
         # Check if the API returned an error
         if "error" in data:
-            error_msg = data['error']['info']
+            error_msg = data["error"]["info"]
             st.error(f"API Error: {error_msg}")
-            if data['error']['code'] == 615:
-                st.warning("Tip: Try adding the country name (e.g., 'Taxila, Pakistan' instead of just 'Taxila').")
-            
+            if data["error"]["code"] == 615:
+                st.warning(
+                    "Tip: Try adding the country name (e.g., 'Taxila, Pakistan' instead of just 'Taxila')."
+                )
+
             # Debugging tool for you
             with st.expander("Why did it fail?"):
                 st.json(data)
